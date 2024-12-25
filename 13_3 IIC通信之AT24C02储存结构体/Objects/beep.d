@@ -1,0 +1,10 @@
+.\objects\beep.o: user\src\BEEP.c
+.\objects\beep.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\stm32f4xx.h
+.\objects\beep.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\Include\core_cm4.h
+.\objects\beep.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\beep.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\Include\core_cmInstr.h
+.\objects\beep.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\Include\core_cmFunc.h
+.\objects\beep.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\Include\core_cm4_simd.h
+.\objects\beep.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\system_stm32f4xx.h
+.\objects\beep.o: .\user\inc\BEEP.h
+.\objects\beep.o: .\user\inc\wang_time.h

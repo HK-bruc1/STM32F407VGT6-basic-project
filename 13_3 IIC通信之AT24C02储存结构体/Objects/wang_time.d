@@ -1,0 +1,14 @@
+.\objects\wang_time.o: user\src\wang_time.c
+.\objects\wang_time.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\stm32f4xx.h
+.\objects\wang_time.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\Include\core_cm4.h
+.\objects\wang_time.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\wang_time.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\Include\core_cmInstr.h
+.\objects\wang_time.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\Include\core_cmFunc.h
+.\objects\wang_time.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\Include\core_cm4_simd.h
+.\objects\wang_time.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\system_stm32f4xx.h
+.\objects\wang_time.o: .\user\inc\wang_time.h
+.\objects\wang_time.o: .\user\inc\systick.h
+.\objects\wang_time.o: .\user\inc\nvic.h
+.\objects\wang_time.o: .\user\inc\adc.h
+.\objects\wang_time.o: .\user\inc\GeneralTim.h
+.\objects\wang_time.o: .\user\inc\functions.h

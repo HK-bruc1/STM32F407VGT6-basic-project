@@ -1,0 +1,114 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¶ÃVision V5.27.1.0
+Copyright (C) 2019 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: bross admin, bross, LIC=KRMW3-AI1SD-2ZMW4-FI8J6-PB1K8-SMEFK
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.25.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 6 (build 750)
+Assembler:       Armasm.exe V5.06 update 6 (build 750)
+Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
+Library Manager: ArmAr.exe V5.06 update 6 (build 750)
+Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
+CPU DLL:         SARMCM3.DLL V5.25.0.0
+Dialog DLL:      DCM.DLL V1.17.0.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.1.0
+Dialog DLL:      TCM.DLL V1.34.0.0
+ 
+<h2>Project:</h2>
+C:\Users\admin\Desktop\STM32œÓƒø\13_3 IICÕ®–≈÷ÆAT24C02¥¢¥ÊΩ·ππÃÂ\project.uvprojx
+Project File Date:  12/24/2024
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'Target 1'
+compiling mian.c...
+.\user\inc\LED.h(26): warning:  #1295-D: Deprecated declaration openAllLed - give arg types
+  void openAllLed();
+.\user\inc\LED.h(27): warning:  #1295-D: Deprecated declaration closeAllLed - give arg types
+  void closeAllLed();
+.\user\inc\LED.h(32): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\user\inc\wang_time.h(13): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\user\inc\BEEP.h(13): warning:  #1295-D: Deprecated declaration beepInit - give arg types
+  void beepInit();
+.\user\inc\BEEP.h(15): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\user\inc\key.h(21): warning:  #1295-D: Deprecated declaration keyInit - give arg types
+  void keyInit();
+.\user\inc\key.h(23): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\user\inc\usart.h(13): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\user\inc\adc.h(25): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\user\inc\nvic.h(24): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\user\inc\selfprintf.h(10): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\user\inc\exti.h(5): warning:  #1295-D: Deprecated declaration exti8Init - give arg types
+  void exti8Init();
+.\user\inc\exti.h(7): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\user\inc\systick.h(9): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\user\inc\baseTIM.h(8): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\user\inc\GeneralTim.h(15): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\user\inc\redThink.h(13): warning:  #1295-D: Deprecated declaration redInit - give arg types
+  void redInit();
+.\user\inc\redThink.h(14): warning:  #1295-D: Deprecated declaration irData - give arg types
+  u8 irData();
+.\user\inc\redThink.h(16): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\user\inc\functions.h(27): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\user\inc\RNG.h(11): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\user\inc\event_handler.h(9): warning:  #1-D: last line of file ends without a newline
+  #endif
+.\user\inc\at24c02.h(24): warning:  #1295-D: Deprecated declaration at24c02_init - give arg types
+  void at24c02_init();
+.\user\inc\at24c02.h(31): warning:  #1-D: last line of file ends without a newline
+  #endif
+user\src\mian.c(43): warning:  #870-D: invalid multibyte character sequence
+  	Book BK1 = {"Ë•øÊ∏∏ËÆ?","Âê¥ÊâøÊÅ?","W201955",0,30,55.5};
+user\src\mian.c(43): error:  #253: expected a ","
+  	Book BK1 = {"Ë•øÊ∏∏ËÆ?","Âê¥ÊâøÊÅ?","W201955",0,30,55.5};
+user\src\mian.c(43): error:  #7: unrecognized token
+  	Book BK1 = {"Ë•øÊ∏∏ËÆ?","Âê¥ÊâøÊÅ?","W201955",0,30,55.5};
+user\src\mian.c(43): error:  #8: missing closing quote
+  	Book BK1 = {"Ë•øÊ∏∏ËÆ?","Âê¥ÊâøÊÅ?","W201955",0,30,55.5};
+user\src\mian.c(45): error:  #67: expected a "}"
+  	u8 startAddress = 0;
+user\src\mian.c(48): error:  #20: identifier "startAddress" is undefined
+  	writeBookToEEPROM(startAddress,&BK1);
+user\src\mian.c(55): warning:  #1-D: last line of file ends without a newline
+  }
+user\src\mian.c: 27 warnings, 5 errors
+".\Objects\project.axf" - 5 Error(s), 27 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F4xx_DFP.2.7.0.pack
+                Keil.STM32F4xx_DFP.2.7.0
+                STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_Target_1
+  C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.7.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
+
+<h2>Collection of Component Files used:</h2>
+Target not created.
+Build Time Elapsed:  00:00:00
+</pre>
+</body>
+</html>

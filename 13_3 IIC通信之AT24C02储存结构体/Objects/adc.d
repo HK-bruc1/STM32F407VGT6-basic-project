@@ -1,0 +1,11 @@
+.\objects\adc.o: user\src\adc.c
+.\objects\adc.o: .\user\inc\adc.h
+.\objects\adc.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\stm32f4xx.h
+.\objects\adc.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\Include\core_cm4.h
+.\objects\adc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\adc.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\Include\core_cmInstr.h
+.\objects\adc.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\Include\core_cmFunc.h
+.\objects\adc.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\Include\core_cm4_simd.h
+.\objects\adc.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\system_stm32f4xx.h
+.\objects\adc.o: .\user\inc\selfprintf.h
+.\objects\adc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
