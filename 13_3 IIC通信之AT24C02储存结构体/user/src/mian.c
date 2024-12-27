@@ -39,15 +39,7 @@ int main(){
 	baseTim6Delay_Ms(50);
 	BEEP_OFF;
 	
-	//初始化一个本书
-	Book BK1 = {"西游记","吴承恩","W201955",0,30,55.5};
-	//写入的起始地址
-	u8 startAddress = 0;
-	
-	//传入一个结构体指针，通过指针传递可以避免大结构体的拷贝，从而提高效率
-	writeBookToEEPROM(startAddress,&BK1);
-	
-	
+	TestBookStorage();
 	
 	while(1){
 		

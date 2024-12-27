@@ -1,0 +1,9 @@
+.\objects\rng.o: user\src\RNG.c
+.\objects\rng.o: .\user\inc\RNG.h
+.\objects\rng.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\stm32f4xx.h
+.\objects\rng.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\Include\core_cm4.h
+.\objects\rng.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\rng.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\Include\core_cmInstr.h
+.\objects\rng.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\Include\core_cmFunc.h
+.\objects\rng.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\Include\core_cm4_simd.h
+.\objects\rng.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\system_stm32f4xx.h

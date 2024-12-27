@@ -12,9 +12,14 @@ typedef struct {
     float price;
 } Book;
 
+
 extern volatile u8 randomColorFlag;
 
-void writeBookToEEPROM(u8 startAddress, const Book* book);
+void WriteBookToEEPROM(Book *book, u16 baseAddr);
+void ReadBookFromEEPROM(Book *book, uint16_t baseAddr);
+void PrintBook(const char* prefix, const Book* book);
+void TestBookStorage(void);
+
 void tim5_Key_RGB(void);
 void changeColorRandomly(void);
 void SR04_Init(void);

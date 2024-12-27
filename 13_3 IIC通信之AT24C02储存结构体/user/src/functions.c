@@ -8,6 +8,8 @@
 #include "RNG.h"
 #include "event_handler.h"
 #include "at24c02.h"
+#include "string.h"
+
 
 //此源文件用于定义综合性函数，不定义各外设的初始化配置，调用时都是配置好的
 
@@ -15,39 +17,75 @@
 volatile uint8_t randomColorFlag = 0;
 
 
-// 封装AT24C02写入结构体操作的函数，传入结构体指针即可，避免副本浪费空间
-void writeBookToEEPROM(u8 startAddress, const Book* book) {
-	//地址为0~255，u8足够
-	u8 address = startAddress;
-	
-	// 写入name,计算结构体成员的字节大小并逐个写入
-	//跨页写入多字节,内部起始地址，需要写入数据的地址，写入字节的数量
-	//book->name 等同于 (&book->name[0])，即 name 数组的首元素的地址
-	//u8 name[30]与char *类型不匹配，需要强转？
-	at24c02_skip_page_write(address,(char *)book->name,sizeof(book->name));
-	
-	//下一次写入的内部地址为
-	address+=sizeof(book->name);
-	
-	//写入作者名
-	at24c02_skip_page_write(address,(char *)book->writer,sizeof(book->writer));
-	
-	//下一次写入的内部地址为
-	address+=sizeof(book->writer);
-	
-	//写入编号
-	at24c02_skip_page_write(address,(char *)book->number,sizeof(book->number));
-	
-	//下一次写入的内部地址为
-	address+=sizeof(book->number);
-	
-	//写入热度,以下直接写入单个字节就可以，价格单独输入？以字符串写入？？？
 
-
-
-
-
+//AT24C02存入结构体
+void WriteBookToEEPROM(Book *book, u16 baseAddr) {
+    // 使用跨页写入函数直接写入整个结构体
+    at24c02_skip_page_write(baseAddr, (char*)book, sizeof(Book));
 }
+
+
+
+// 从AT24C02读取Book结构体
+void ReadBookFromEEPROM(Book *book, uint16_t baseAddr) {
+    // 使用连续读取函数直接读取整个结构体
+    at24c02_page_read(baseAddr, (char*)book, sizeof(Book));
+}
+
+// 打印Book结构体内容
+void PrintBook(const char* prefix, const Book* book) {
+    printf("\n%s书籍信息:\n", prefix);
+    printf("---------------------------\n");
+    printf("书名: %s\n", book->name);
+    printf("作者: %s\n", book->writer);
+    printf("编号: %s\n", book->number);
+    printf("点击量: %lu\n", (unsigned long)book->hot);
+    printf("收藏数: %lu\n", (unsigned long)book->sc);
+    printf("价格: %.2f\n", book->price);
+    printf("---------------------------\n");
+}
+
+
+// 测试函数
+void TestBookStorage(void) {
+    // 1. 创建并打印原始数据
+    Book BK1 = {"西游记","吴承恩","W201955",0,30,55.5};
+    PrintBook("原始", &BK1);
+    
+    // 2. 写入EEPROM
+    WriteBookToEEPROM(&BK1, 0);
+    printf("数据已写入EEPROM\n");
+    
+    // 3. 从EEPROM读取
+    Book readBook = {0};  // 清零初始化
+    ReadBookFromEEPROM(&readBook, 0);
+    
+    // 4. 打印读取的数据
+    PrintBook("读取", &readBook);
+    
+    // 5. 验证数据是否一致
+    if (memcmp(&BK1, &readBook, sizeof(Book)) == 0) {
+        printf("数据验证成功: 读取的数据与原始数据完全一致!\n");
+    } else {
+        printf("数据验证失败: 读取的数据与原始数据不一致!\n");
+        
+        // 详细比对各字段
+        if (strcmp((char*)BK1.name, (char*)readBook.name) != 0) 
+            printf("书名不一致\n");
+        if (strcmp((char*)BK1.writer, (char*)readBook.writer) != 0) 
+            printf("作者不一致\n");
+        if (strcmp((char*)BK1.number, (char*)readBook.number) != 0) 
+            printf("编号不一致\n");
+        if (BK1.hot != readBook.hot) 
+            printf("点击量不一致\n");
+        if (BK1.sc != readBook.sc) 
+            printf("收藏数不一致\n");
+        if (BK1.price != readBook.price) 
+            printf("价格不一致\n");
+    }
+}
+
+
 
 
 //按键控制RGB颜色,先初始化tim5_RGBInit还有keyInit();

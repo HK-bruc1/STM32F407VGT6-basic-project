@@ -1,0 +1,16 @@
+.\objects\event_handler.o: user\src\event_handler.c
+.\objects\event_handler.o: .\user\inc\event_handler.h
+.\objects\event_handler.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\stm32f4xx.h
+.\objects\event_handler.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\Include\core_cm4.h
+.\objects\event_handler.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\event_handler.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\Include\core_cmInstr.h
+.\objects\event_handler.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\Include\core_cmFunc.h
+.\objects\event_handler.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\Include\core_cm4_simd.h
+.\objects\event_handler.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\system_stm32f4xx.h
+.\objects\event_handler.o: .\user\inc\nvic.h
+.\objects\event_handler.o: .\user\inc\adc.h
+.\objects\event_handler.o: .\user\inc\selfprintf.h
+.\objects\event_handler.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\event_handler.o: .\user\inc\BEEP.h
+.\objects\event_handler.o: .\user\inc\LED.h
+.\objects\event_handler.o: .\user\inc\functions.h

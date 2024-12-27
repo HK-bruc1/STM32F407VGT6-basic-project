@@ -5,6 +5,10 @@
 
 extern char at24c02_rec_str[];
 
+// AT24C02页大小定义
+#define PAGE_SIZE 8
+#define EEPROM_SIZE 256
+
 
 //读写对应的器件地址
 #define AT24C02_ADDR_W 0xa0
