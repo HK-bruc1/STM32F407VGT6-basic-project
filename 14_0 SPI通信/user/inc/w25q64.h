@@ -26,7 +26,8 @@ void W25Q64_writePage(u32 inner_addr, u8* data, u16 length);
 void W25Q64_SectorErase(u32 inner_addr);
 void W25Q64_BlockErase(u32 inner_addr);
 void W25Q64_ChipErase();
-void W25Q64_Test(void);
+void W25Q64_skip_page_write(u32 inner_addr, u8* data, u32 length);
+void W25Q64_BlocksErase(u32 inner_addr,u8 blocks);
 
 
 

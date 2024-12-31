@@ -9,12 +9,71 @@
 #include "event_handler.h"
 #include "at24c02.h"
 #include "string.h"
+#include "w25q64.h"
 
 
 //此源文件用于定义综合性函数，不定义各外设的初始化配置，调用时都是配置好的
 
 
 volatile uint8_t randomColorFlag = 0;
+
+
+//W25Q64测试函数
+void W25Q64_Test(void){
+    u8 writeData[300] = {0}; // 增加数组大小，确保跨页
+    u8 readData[300] = {0};  // 读取数据缓冲区
+    
+    // 初始化W25Q64控制器
+    W25Q64_Init();
+    printf("W25Q64 Test Start...\r\n");
+    
+    // 填充测试数据
+    for (int i = 0; i < 300; i++) {
+        writeData[i] = i; // 填充0-299的数据
+    }
+
+    // 打印writeData数组的前16个元素
+    printf("WriteData: ");
+    for (int i = 0; i < 16; i++) {
+        printf("%02X ", writeData[i]);
+    }
+    printf("\r\n");
+
+    // 擦除扇区数据
+    W25Q64_SectorErase(0x0000FA);
+
+    // 写入超过256字节的数据，测试跨页
+    W25Q64_skip_page_write(0x0000FA, writeData, 300);
+    printf("Write 300 Bytes Data\r\n");
+    
+    // 读取数据
+    W25Q64_ReadData(0x0000FA, readData, 300);
+    printf("Read 300 Bytes Data\r\n");
+    
+    // 打印readData数组的前16个元素
+    printf("ReadData: ");
+    for (int i = 0; i < 16; i++) {
+        printf("%02X ", readData[i]);
+    }
+    printf("\r\n");
+    
+    // 比较写入和读取的数据
+    int errorCount = 0;
+    for (int i = 0; i < 300; i++) {
+        if (writeData[i] != readData[i]) {
+            errorCount++;
+            // 可选：打印具体的错误位置和数据
+            // printf("Error at index %d: wrote %02X, read %02X\r\n", i, writeData[i], readData[i]);
+        }
+    }
+    
+    if (errorCount == 0) {
+        printf("Data Verify Success!\r\n");
+    } else {
+        printf("Data Verify Failed! Error Count: %d\r\n", errorCount);
+    }
+}
+
 
 //流水灯速度保存测试函数
 void Test_WaterLed_EEPROM(void) {

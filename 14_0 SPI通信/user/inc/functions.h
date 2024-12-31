@@ -23,8 +23,11 @@ typedef struct {
 
 extern volatile u8 randomColorFlag;
 
-void Test_WaterLed_EEPROM(void);
 
+
+void W25Q64_Test(void);
+
+void Test_WaterLed_EEPROM(void);
 u8 PrintBootCount(void);
 void WriteBookToEEPROM(Book *book, u16 baseAddr);
 void ReadBookFromEEPROM(Book *book, uint16_t baseAddr);

@@ -18,3 +18,4 @@
 .\objects\functions.o: .\user\inc\event_handler.h
 .\objects\functions.o: .\user\inc\at24c02.h
 .\objects\functions.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\functions.o: .\user\inc\w25q64.h

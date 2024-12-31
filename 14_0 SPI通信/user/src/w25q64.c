@@ -85,9 +85,28 @@ void W25Q64_ReadData(u32 inner_addr, u8* data, u32 length) {
 
 
 //页编程,做多写256个字节
-//这个页边界也是固定的？还是动态计算的？
-//inner_addr是不是要校验？
+//这个页边界也是固定的
+//inner_addr要校验
 void W25Q64_writePage(u32 inner_addr, u8* data, u16 length){
+		if (length == 0) {
+			printf("写入长度为0，无效操作\r\n");
+			return;
+		}
+
+	// 检查是否跨页
+    u32 start_page = inner_addr / 256;
+	//起始地址也使用了需要减去1
+    u32 end_addr = inner_addr + length - 1;
+    u32 end_page = end_addr / 256;
+  //C语言中整数除法会自动舍去小数部分,这个特性刚好可以用来计算页号
+	//这就像把一串连续的地址按照256个一组分页:
+	//0~255 都除以256得到0(第0页)
+	//256~511 都除以256得到1(第1页)
+    if(start_page != end_page){
+        printf("地址和元素长度冲突，不能跨页操作\r\n");
+        return;
+    }
+		
 	W25Q64_WriteEnable();
 	//擦除扇区,单一职责，只负责写入，在外面擦除
 	//W25Q64_SectorErase(inner_addr);
@@ -107,6 +126,33 @@ void W25Q64_writePage(u32 inner_addr, u8* data, u16 length){
 	// 等待写入完成
     while(W25Q64_ReadStatus() & (1U<<0));
 	//printf("写入成功......\r\n");
+}
+
+
+//连续跨页写操作
+void W25Q64_skip_page_write(u32 inner_addr, u8* data, u32 length){
+    if (length == 0) {
+        printf("写入长度为0，无效操作\r\n");
+        return;
+    }
+
+	  //已经写入的字节数
+    u32 written = 0;
+	 	//从0开始使用<即可
+    while (written < length) {
+			// 计算当前页可写入的字节数
+			u16 page_remaining = 256 - (inner_addr % 256);
+			//确定本次写入的具体字节数
+			//剩余元素<本页剩余空间  或者  写满本页
+			u16 to_write = (length - written < page_remaining) ? length - written : page_remaining;
+
+			// 写入当前页
+			W25Q64_writePage(inner_addr, data + written, to_write);
+
+			// 更新已写入字节数和地址
+			written += to_write;
+			inner_addr += to_write;
+     }
 }
 
 
@@ -148,6 +194,17 @@ void W25Q64_BlockErase(u32 inner_addr){
 }
 
 
+//多块连续擦除
+void W25Q64_BlocksErase(u32 inner_addr,u8 blocks){
+	while(blocks){
+		W25Q64_BlockErase(inner_addr);
+		//一块的大小为65536个字节
+		inner_addr+=65536;
+		blocks--;
+	}
+}
+
+
 //芯片擦除 20s,不需要传入地址
 void W25Q64_ChipErase(){
 	//先写使能，才能写入输入数据
@@ -159,64 +216,4 @@ void W25Q64_ChipErase(){
 	//不停的读取状态
 	while(W25Q64_ReadStatus() & (1U<<0));
 	//printf("芯片擦除完成\r\n");
-}
-
-
-
-
-
-//W25Q64测试函数
-void W25Q64_Test(void){
-    u8 writeData[256] = {0}; // 初始化为0
-    u8 readData[256] = {0};  // 读取数据缓冲区
-    
-    // 初始化W25Q64控制器
-    W25Q64_Init();
-    printf("W25Q64 Test Start...\r\n");
-    
-    // 填充测试数据
-    for (int i = 0; i < 256; i++) {
-        writeData[i] = i; // 填充0-255的数据
-    }
-
-    // 打印writeData数组的前16个元素
-    printf("WriteData: ");
-    for (int i = 0; i < 16; i++) {
-        printf("%02X ", writeData[i]);
-    }
-    printf("\r\n");
-		//擦除扇区数据(ok)
-    W25Q64_SectorErase(0x000000);
-		//擦除块区数据(ok)
-    //W25Q64_BlockErase(0x000000);
-		//擦除芯片数据(ok)
-    //W25Q64_ChipErase();
-    // 写入数据到0x000000地址 写入一页数据
-    //W25Q64_writePage(0x000000, writeData, 256);
-    printf("Write 256 Bytes Data\r\n");
-    
-    // 从0x000000地址读取数据
-    W25Q64_ReadData(0x000000, readData, 256);
-    printf("Read 256 Bytes Data\r\n");
-    
-    // 打印readData数组的前16个元素
-    printf("ReadData: ");
-    for (int i = 0; i < 16; i++) {
-        printf("%02X ", readData[i]);
-    }
-    printf("\r\n");
-    
-    // 比较写入和读取的数据
-    int errorCount = 0;
-    for (int i = 0; i < 256; i++) {
-        if (writeData[i] != readData[i]) {
-            errorCount++;
-        }
-    }
-    
-    if (errorCount == 0) {
-        printf("Data Verify Success!\r\n");
-    } else {
-        printf("Data Verify Failed! Error Count: %d\r\n", errorCount);
-    }
 }

@@ -35,9 +35,9 @@ int main(){
 	
 	
 	//先开后关
-	BEEP_ON;
+	//BEEP_ON;
 	baseTim6Delay_Ms(50);
-	BEEP_OFF;
+	//BEEP_OFF;
 	
 	//W25Q64测试
 	W25Q64_Test();
