@@ -1,0 +1,11 @@
+.\objects\iwdg.o: user\src\iwdg.c
+.\objects\iwdg.o: .\user\inc\iwdg.h
+.\objects\iwdg.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\stm32f4xx.h
+.\objects\iwdg.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\Include\core_cm4.h
+.\objects\iwdg.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\iwdg.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\Include\core_cmInstr.h
+.\objects\iwdg.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\Include\core_cmFunc.h
+.\objects\iwdg.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\Include\core_cm4_simd.h
+.\objects\iwdg.o: .\STM32F4xx_DSP_StdPeriph_Lib_V1.4.0\Libraries\CMSIS\system_stm32f4xx.h
+.\objects\iwdg.o: .\user\inc\selfprintf.h
+.\objects\iwdg.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
