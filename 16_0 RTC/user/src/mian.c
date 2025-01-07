@@ -46,20 +46,31 @@ int main(){
 	baseTim6Delay_Ms(50);
 	BEEP_OFF;
 	
+	//手动校准时间
+//	RTC_T data = {
+//    .years = 2025,
+//    .mon = 1,
+//    .date = 3,
+//    .week = 5,
+//    .h = 12,
+//    .m = 12,
+//    .s = 12
+//	};
+//	rtc_set(data);
 	
 	
 	while(1){
 		//每隔一秒打印一次万年历
 		baseTim7DelayPlus_Ms(1000);
 		RTC_T current_time =  rtc_get();
-		// 格式化输出，增加可读性
-        printf("Current Time: %04d-%02d-%02d Week:%d %02d:%02d:%02d\n", 
-               current_time.years, 
-               current_time.mon, 
-               current_time.date, 
-               current_time.week,
-               current_time.h, 
-               current_time.m, 
-               current_time.s);
+		// 格式化输出当前时间，增加可读性
+		printf("当前时间：%04d年%02d月%02d日 星期%d %02d:%02d:%02d\n",
+			current_time.years,  // 年份
+			current_time.mon,     // 月份
+			current_time.date,    // 日期
+			current_time.week,    // 星期几（1-7，7表示星期日）
+			current_time.h,       // 小时
+			current_time.m,       // 分钟
+			current_time.s);      // 秒
 	}
 }
